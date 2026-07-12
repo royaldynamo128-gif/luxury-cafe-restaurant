@@ -1,14 +1,11 @@
 "use client"
 
 import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { motion } from "framer-motion"
 import { GlassCard } from "./glass-card"
 import { AnimatedCounter } from "./animated-counter"
 import { Flame, Star, Coffee, UtensilsCrossed, Wine, Sparkles } from "lucide-react"
-
-gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from "@/hooks/useReveal"
 
 const capabilities = [
   {
@@ -81,58 +78,35 @@ const achievements = [
 ]
 
 export function CapabilitiesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const lineRef = useRef<HTMLDivElement>(null)
+  const headerReveal = useReveal("-80px")
+  const statsReveal = useReveal("-60px")
+  const cardsReveal = useReveal("-40px")
 
-  useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReduced) {
-      gsap.set(headerRef.current, { opacity: 1, y: 0 })
-      return
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
+
+  const listContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
     }
+  }
 
-    const ctx = gsap.context(() => {
-      // Animate section header
-      gsap.fromTo(
-        headerRef.current,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 85%",
-            once: true,
-          },
-        }
-      )
+  const statItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } }
+  }
 
-      // Animate expand line
-      gsap.fromTo(
-        lineRef.current,
-        { scaleX: 0, transformOrigin: "left" },
-        {
-          scaleX: 1,
-          duration: 1.2,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: lineRef.current,
-            start: "top 90%",
-            once: true,
-          },
-        }
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+  const cardItemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
 
   return (
     <section
-      ref={sectionRef}
       id="story"
       className="relative py-14 md:py-20 overflow-hidden"
       aria-labelledby="capabilities-heading"
@@ -151,12 +125,18 @@ export function CapabilitiesSection() {
 
       <div className="container mx-auto px-6 md:px-8">
         {/* Section Header */}
-        <div ref={headerRef} className="opacity-0 mb-10">
+        <motion.div
+          ref={headerReveal.ref}
+          initial="hidden"
+          animate={headerReveal.visible ? "visible" : "hidden"}
+          variants={headerVariants}
+          className="mb-10"
+        >
           <div className="flex items-center gap-4 mb-6">
             <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-gold">
               01 — L'Histoire
             </span>
-            <div ref={lineRef} className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent max-w-xs origin-left" />
+            <div className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent max-w-xs origin-left" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
@@ -183,18 +163,21 @@ export function CapabilitiesSection() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Achievement numbers */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <motion.div
+          ref={statsReveal.ref}
+          initial="hidden"
+          animate={statsReveal.visible ? "visible" : "hidden"}
+          variants={listContainerVariants}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
+        >
           {achievements.map((item, i) => (
             <motion.div
               key={i}
+              variants={statItemVariants}
               className="text-center p-6 rounded-2xl border border-white/[0.04] bg-white/[0.02]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="font-black stat-number mb-1"
                 style={{
@@ -205,28 +188,31 @@ export function CapabilitiesSection() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                <AnimatedCounter end={item.value} suffix={item.suffix} duration={1800} />
+                {statsReveal.visible ? (
+                  <AnimatedCounter end={item.value} suffix={item.suffix} duration={1800} />
+                ) : (
+                  <span>0</span>
+                )}
               </div>
               <div className="text-white/35 text-xs font-medium uppercase tracking-[0.2em]">{item.label}</div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Capability cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div
+          ref={cardsReveal.ref}
+          initial="hidden"
+          animate={cardsReveal.visible ? "visible" : "hidden"}
+          variants={listContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
           {capabilities.map((cap, i) => {
             const Icon = cap.icon
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  delay: cap.delay,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                variants={cardItemVariants}
               >
                 <GlassCard
                   className={`h-full bg-gradient-to-br ${cap.accent} p-8`}
@@ -255,7 +241,7 @@ export function CapabilitiesSection() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

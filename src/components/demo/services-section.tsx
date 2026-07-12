@@ -1,14 +1,11 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef } from "react"
 import { motion } from "framer-motion"
 import { Check, Sparkles } from "lucide-react"
 import { GlowButton } from "./magnetic-button"
 import { BorderBeam } from "@/components/magicui/border-beam"
-
-gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from "@/hooks/useReveal"
 
 const tiers = [
   {
@@ -64,9 +61,7 @@ const tiers = [
   },
 ]
 
-function PricingCard({ tier, index }: { tier: typeof tiers[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-
+function PricingCard({ tier, variants }: { tier: typeof tiers[0]; variants: any }) {
   const handleScroll = (id: string) => {
     const el = document.querySelector(id)
     el?.scrollIntoView({ behavior: "smooth" })
@@ -74,7 +69,7 @@ function PricingCard({ tier, index }: { tier: typeof tiers[0]; index: number }) 
 
   return (
     <motion.div
-      ref={cardRef}
+      variants={variants}
       className={`relative flex flex-col rounded-3xl p-8 overflow-hidden ${
         tier.highlighted
           ? "bg-gradient-to-b from-amber-950/20 to-amber-900/5"
@@ -82,14 +77,6 @@ function PricingCard({ tier, index }: { tier: typeof tiers[0]; index: number }) 
       }`}
       style={{
         border: `1px solid ${tier.highlighted ? "rgba(212, 175, 55, 0.30)" : "rgba(255,255,255,0.06)"}`,
-      }}
-      initial={{ opacity: 0, y: 50, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        delay: index * 0.12,
-        duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{
         y: -4,
@@ -179,11 +166,29 @@ function PricingCard({ tier, index }: { tier: typeof tiers[0]; index: number }) 
 }
 
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const headerReveal = useReveal("-80px")
+  const cardsReveal = useReveal("-50px")
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.97 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
 
   return (
     <section
-      ref={sectionRef}
       id="services"
       className="relative py-14 md:py-20 overflow-hidden"
       aria-labelledby="services-heading"
@@ -206,11 +211,11 @@ export function ServicesSection() {
       <div className="container mx-auto px-6 md:px-8">
         {/* Section header */}
         <motion.div
+          ref={headerReveal.ref}
+          initial="hidden"
+          animate={headerReveal.visible ? "visible" : "hidden"}
+          variants={headerVariants}
           className="mb-12 text-center max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/40" aria-hidden="true" />
@@ -242,17 +247,23 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Pricing grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
-          {tiers.map((tier, i) => (
-            <PricingCard key={tier.name} tier={tier} index={i} />
+        <motion.div
+          ref={cardsReveal.ref}
+          initial="hidden"
+          animate={cardsReveal.visible ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch"
+        >
+          {tiers.map((tier) => (
+            <PricingCard key={tier.name} tier={tier} variants={cardVariants} />
           ))}
-        </div>
+        </motion.div>
 
         {/* Trust row */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          whileInView={{ opacity: 0.4 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >

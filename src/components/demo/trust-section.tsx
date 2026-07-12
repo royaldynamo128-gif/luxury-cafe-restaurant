@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Marquee } from "@/components/magicui/marquee"
 import { ArrowRight, Sparkles, Check, Calendar, Users, Clock, MessageSquare } from "lucide-react"
 import { GlowButton } from "./magnetic-button"
+import { useReveal } from "@/hooks/useReveal"
 
 const partners = [
   "Oscietra Caviar",
@@ -48,6 +49,9 @@ export function TrustSection() {
   const [notes, setNotes] = useState("")
   const [bookingState, setBookingState] = useState<"form" | "loading" | "success">("form")
 
+  const testimonialsReveal = useReveal("-80px")
+  const formReveal = useReveal("-50px")
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!date) return
@@ -55,6 +59,24 @@ export function TrustSection() {
     setTimeout(() => {
       setBookingState("success")
     }, 1200)
+  }
+
+  const listContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12 }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
+
+  const formVariants = {
+    hidden: { opacity: 0, scale: 0.98 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } }
   }
 
   return (
@@ -75,7 +97,7 @@ export function TrustSection() {
       <div className="container mx-auto px-6 md:px-8">
         {/* Ingredient Partners marquee */}
         <div className="mb-12">
-          <p className="text-center text-[10px] uppercase font-bold tracking-[0.3em] text-white/20 mb-8">
+          <p className="text-center text-[10px] uppercase font-bold tracking-[0.35em] text-white/20 mb-8">
             Sourcing partner ingredients from premium world purveyors
           </p>
           <Marquee className="[--duration:25s] opacity-35 hover:opacity-55 transition-opacity duration-500" pauseOnHover>
@@ -91,16 +113,19 @@ export function TrustSection() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <motion.div
+          ref={testimonialsReveal.ref}
+          initial="hidden"
+          animate={testimonialsReveal.visible ? "visible" : "hidden"}
+          variants={listContainerVariants}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"
+        >
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
+              variants={itemVariants}
               className="relative p-8 rounded-3xl bg-white/[0.02] flex flex-col gap-6"
               style={{ border: "1px solid rgba(255,255,255,0.05)" }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{
                 y: -3,
                 borderColor: `oklch(${t.color} / 0.25)`,
@@ -135,18 +160,18 @@ export function TrustSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Reservation Card Form */}
         <motion.div
+          ref={formReveal.ref}
+          initial="hidden"
+          animate={formReveal.visible ? "visible" : "hidden"}
+          variants={formVariants}
           className="relative overflow-hidden rounded-3xl border border-gold/20 p-8 md:p-12"
           style={{
             background: "linear-gradient(135deg, oklch(0.12 0.02 50) 0%, oklch(0.09 0.01 50) 100%)",
           }}
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Background Glow */}
           <div

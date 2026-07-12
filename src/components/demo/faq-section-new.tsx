@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Plus } from "lucide-react"
+import { useReveal } from "@/hooks/useReveal"
 
 const faqs = [
   {
@@ -32,16 +33,13 @@ const faqs = [
   },
 ]
 
-function FaqItem({ item, index }: { item: typeof faqs[0]; index: number }) {
+function FaqItem({ item, variants }: { item: typeof faqs[0]; variants: any }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <motion.div
+      variants={variants}
       className="border-b border-white/[0.05] overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <button
         className="w-full flex items-start justify-between gap-6 py-6 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-lg"
@@ -85,11 +83,29 @@ function FaqItem({ item, index }: { item: typeof faqs[0]; index: number }) {
 }
 
 export function FaqSectionNew() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const leftReveal = useReveal("-80px")
+  const rightReveal = useReveal("-50px")
+
+  const leftVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
+
+  const listContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 }
+    }
+  }
+
+  const faqItemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } }
+  }
 
   return (
     <section
-      ref={sectionRef}
       id="faq"
       className="relative py-16 md:py-24"
       aria-labelledby="faq-heading"
@@ -107,11 +123,11 @@ export function FaqSectionNew() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
           {/* Left column */}
           <motion.div
+            ref={leftReveal.ref}
+            initial="hidden"
+            animate={leftReveal.visible ? "visible" : "hidden"}
+            variants={leftVariants}
             className="lg:col-span-2"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center gap-4 mb-6">
               <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-gold">
@@ -140,13 +156,21 @@ export function FaqSectionNew() {
           </motion.div>
 
           {/* Right column — FAQ items */}
-          <div className="lg:col-span-3" role="list" aria-label="Frequently asked questions">
+          <motion.div
+            ref={rightReveal.ref}
+            initial="hidden"
+            animate={rightReveal.visible ? "visible" : "hidden"}
+            variants={listContainerVariants}
+            className="lg:col-span-3"
+            role="list"
+            aria-label="Frequently asked questions"
+          >
             {faqs.map((faq, i) => (
               <div key={i} role="listitem">
-                <FaqItem item={faq} index={i} />
+                <FaqItem item={faq} variants={faqItemVariants} />
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,12 +1,9 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
-
-gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from "@/hooks/useReveal"
 
 const works = [
   {
@@ -67,39 +64,7 @@ const works = [
   },
 ]
 
-function WorkCard({ work, index }: { work: typeof works[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReduced) {
-      gsap.set(cardRef.current, { opacity: 1, y: 0, scale: 1 })
-      return
-    }
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardRef.current,
-        { opacity: 0, y: 50, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top 88%",
-            once: true,
-          },
-          delay: index * 0.12,
-        }
-      )
-    })
-
-    return () => ctx.revert()
-  }, [index])
-
+function WorkCard({ work, variants }: { work: typeof works[0]; variants: any }) {
   const handleScroll = (id: string) => {
     const el = document.querySelector(id)
     el?.scrollIntoView({ behavior: "smooth" })
@@ -107,8 +72,8 @@ function WorkCard({ work, index }: { work: typeof works[0]; index: number }) {
 
   return (
     <motion.div
-      ref={cardRef}
-      className="opacity-0 group relative overflow-hidden rounded-3xl cursor-pointer"
+      variants={variants}
+      className="group relative overflow-hidden rounded-3xl cursor-pointer"
       style={{
         border: "1px solid rgba(255,255,255,0.06)",
       }}
@@ -231,11 +196,29 @@ function WorkCard({ work, index }: { work: typeof works[0]; index: number }) {
 }
 
 export function WorksSection() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const headerReveal = useReveal("-80px")
+  const cardsReveal = useReveal("-50px")
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12 }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 35, scale: 0.98 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+  }
 
   return (
     <section
-      ref={sectionRef}
       id="menu"
       className="relative py-14 md:py-20 overflow-hidden"
       aria-labelledby="works-heading"
@@ -255,11 +238,11 @@ export function WorksSection() {
       <div className="container mx-auto px-6 md:px-8">
         {/* Section Header */}
         <motion.div
+          ref={headerReveal.ref}
+          initial="hidden"
+          animate={headerReveal.visible ? "visible" : "hidden"}
+          variants={headerVariants}
           className="mb-10"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="flex items-center gap-4 mb-6">
             <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-gold">
@@ -291,11 +274,17 @@ export function WorksSection() {
         </motion.div>
 
         {/* Works grid — asymmetric bento layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {works.map((work, i) => (
-            <WorkCard key={work.id} work={work} index={i} />
+        <motion.div
+          ref={cardsReveal.ref}
+          initial="hidden"
+          animate={cardsReveal.visible ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+        >
+          {works.map((work) => (
+            <WorkCard key={work.id} work={work} variants={cardVariants} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
