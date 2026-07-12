@@ -102,10 +102,10 @@ function WorkCard({ work, variants }: { work: typeof works[0]; variants: any }) 
       />
 
       {/* Content */}
-      <div className="relative z-10 p-8 md:p-10 h-full flex flex-col min-h-[320px]">
+      <div className="relative z-10 p-6 sm:p-8 md:p-10 h-full flex flex-col min-h-[280px] sm:min-h-[320px]">
 
         {/* Header */}
-        <div className="flex items-start justify-between mb-8">
+        <div className="flex items-start justify-between mb-5 sm:mb-8">
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="text-[9px] font-bold uppercase tracking-[0.3em]"
@@ -132,7 +132,7 @@ function WorkCard({ work, variants }: { work: typeof works[0]; variants: any }) 
         <h3
           className="font-black uppercase tracking-tighter leading-none mb-5"
           style={{
-            fontSize: work.size === "large" ? "clamp(2rem, 5vw, 3.5rem)" : "clamp(1.5rem, 3vw, 2.25rem)",
+            fontSize: work.size === "large" ? "clamp(1.75rem, 5vw, 3.5rem)" : "clamp(1.4rem, 4vw, 2.25rem)",
             background: "linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
@@ -143,12 +143,12 @@ function WorkCard({ work, variants }: { work: typeof works[0]; variants: any }) 
         </h3>
 
         {/* Description */}
-        <p className="text-white/40 text-sm leading-relaxed mb-8 max-w-sm">
+        <p className="text-white/40 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-8 max-w-sm">
           {work.description}
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-8">
           {work.tags.map((tag) => (
             <span
               key={tag}
@@ -220,7 +220,7 @@ export function WorksSection() {
   return (
     <section
       id="menu"
-      className="relative py-14 md:py-20 overflow-hidden"
+      className="relative py-12 sm:py-14 md:py-20 overflow-hidden"
       aria-labelledby="works-heading"
     >
       {/* Background */}
@@ -235,7 +235,7 @@ export function WorksSection() {
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="container mx-auto px-5 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div
           ref={headerReveal.ref}
@@ -279,7 +279,7 @@ export function WorksSection() {
           initial="hidden"
           animate={cardsReveal.visible ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
         >
           {works.map((work) => (
             <WorkCard key={work.id} work={work} variants={cardVariants} />

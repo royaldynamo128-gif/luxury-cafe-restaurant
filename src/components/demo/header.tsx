@@ -62,7 +62,7 @@ export function Header() {
         }`}
       >
         <nav className="container mx-auto px-6 md:px-8" aria-label="Primary navigation">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
             {/* Logo */}
             <a
               href="#"
@@ -132,7 +132,7 @@ export function Header() {
 
               {/* Mobile menu button */}
               <button
-                className="md:hidden h-10 w-10 rounded-xl border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-white/20 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                className="md:hidden h-11 w-11 rounded-xl border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-white/20 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 aria-expanded={isMobileOpen}
                 aria-controls="mobile-menu"
@@ -162,14 +162,14 @@ export function Header() {
 
         {/* Menu panel */}
         <motion.nav
-          className="absolute top-0 right-0 bottom-0 w-72 border-l border-white/[0.06]"
+          className="absolute top-0 right-0 bottom-0 w-[min(18rem,100vw)] border-l border-white/[0.06]"
           style={{ background: "oklch(0.09 0.006 50)" }}
           initial={{ x: "100%" }}
           animate={{ x: isMobileOpen ? "0%" : "100%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col h-full p-8 pt-24">
+          <div className="flex flex-col h-full p-6 sm:p-8 pt-20 sm:pt-24">
             <ul className="space-y-2 flex-1" role="list">
               {navLinks.map((link, i) => (
                 <motion.li
@@ -180,7 +180,7 @@ export function Header() {
                 >
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold uppercase tracking-wider text-white/50 hover:text-white hover:bg-white/[0.04] transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                    className="w-full text-left px-4 py-4 rounded-xl text-sm font-semibold uppercase tracking-wider text-white/50 hover:text-white hover:bg-white/[0.04] transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold min-h-[48px] flex items-center"
                   >
                     {link.label}
                   </button>

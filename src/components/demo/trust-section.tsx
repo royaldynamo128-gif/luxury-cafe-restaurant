@@ -82,7 +82,7 @@ export function TrustSection() {
   return (
     <section
       id="reserve"
-      className="relative py-14 overflow-hidden border-t border-white/[0.04]"
+      className="relative py-12 sm:py-14 overflow-hidden border-t border-white/[0.04]"
       aria-label="Client testimonials and reservations"
     >
       {/* Background */}
@@ -118,7 +118,7 @@ export function TrustSection() {
           initial="hidden"
           animate={testimonialsReveal.visible ? "visible" : "hidden"}
           variants={listContainerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-14"
         >
           {testimonials.map((t, i) => (
             <motion.div
@@ -242,7 +242,7 @@ export function TrustSection() {
                             key={t}
                             type="button"
                             onClick={() => setTime(t)}
-                            className={`py-2 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
+                            className={`py-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer min-h-[44px] ${
                               time === t
                                 ? "bg-gold border-gold text-background"
                                 : "bg-white/[0.02] border-white/5 text-white/60 hover:border-white/20"
@@ -262,13 +262,13 @@ export function TrustSection() {
                       <label className="block text-[10px] uppercase font-bold tracking-[0.15em] text-white/50 mb-1.5 flex items-center gap-2">
                         <Users className="h-3.5 w-3.5 text-gold" /> Party Size
                       </label>
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                         {["1 Guest", "2 Guests", "4 Guests", "6 Guests", "8 Guests"].map((g) => (
                           <button
                             key={g}
                             type="button"
                             onClick={() => setGuests(g)}
-                            className={`py-2 text-[10px] font-bold rounded-lg border transition-all cursor-pointer ${
+                            className={`py-3 text-[10px] sm:text-xs font-bold rounded-lg border transition-all cursor-pointer min-h-[44px] ${
                               guests === g
                                 ? "bg-gold border-gold text-background"
                                 : "bg-white/[0.02] border-white/5 text-white/60 hover:border-white/20"

@@ -190,7 +190,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative py-14 md:py-20 overflow-hidden"
+      className="relative py-12 sm:py-14 md:py-20 overflow-hidden"
       aria-labelledby="services-heading"
     >
       {/* Background */}
@@ -208,7 +208,7 @@ export function ServicesSection() {
       {/* Top section line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" aria-hidden="true" />
 
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="container mx-auto px-5 sm:px-6 md:px-8">
         {/* Section header */}
         <motion.div
           ref={headerReveal.ref}
@@ -252,7 +252,7 @@ export function ServicesSection() {
           initial="hidden"
           animate={cardsReveal.visible ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch"
         >
           {tiers.map((tier) => (
             <PricingCard key={tier.name} tier={tier} variants={cardVariants} />

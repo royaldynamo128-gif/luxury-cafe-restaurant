@@ -108,7 +108,7 @@ export function CapabilitiesSection() {
   return (
     <section
       id="story"
-      className="relative py-14 md:py-20 overflow-hidden"
+      className="relative py-12 sm:py-14 md:py-20 overflow-hidden"
       aria-labelledby="capabilities-heading"
     >
       {/* Background mesh */}
@@ -123,7 +123,7 @@ export function CapabilitiesSection() {
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="container mx-auto px-5 sm:px-6 md:px-8">
         {/* Section Header */}
         <motion.div
           ref={headerReveal.ref}
@@ -171,13 +171,13 @@ export function CapabilitiesSection() {
           initial="hidden"
           animate={statsReveal.visible ? "visible" : "hidden"}
           variants={listContainerVariants}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8"
         >
           {achievements.map((item, i) => (
             <motion.div
               key={i}
               variants={statItemVariants}
-              className="text-center p-6 rounded-2xl border border-white/[0.04] bg-white/[0.02]"
+              className="text-center p-4 sm:p-6 rounded-2xl border border-white/[0.04] bg-white/[0.02]"
             >
               <div className="font-black stat-number mb-1"
                 style={{
@@ -205,7 +205,7 @@ export function CapabilitiesSection() {
           initial="hidden"
           animate={cardsReveal.visible ? "visible" : "hidden"}
           variants={listContainerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
           {capabilities.map((cap, i) => {
             const Icon = cap.icon

@@ -83,7 +83,7 @@ export default function HomePage() {
           role="contentinfo"
         >
           <div className="container mx-auto px-6 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-12">
               {/* Col 1: Brand info */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2.5" aria-label="L'Étoile Dorée">
@@ -129,7 +129,7 @@ export default function HomePage() {
                 <p className="text-white/40 text-xs leading-relaxed">
                   Subscribe to receive private dinner invitations and seasonal menu releases.
                 </p>
-                <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+                <form className="flex flex-wrap gap-2" onSubmit={(e) => e.preventDefault()}>
                   <input
                     type="email"
                     placeholder="Enter your email"
@@ -159,7 +159,7 @@ export default function HomePage() {
                     <li key={item}>
                       <a
                         href="#"
-                        className="text-[9px] uppercase tracking-[0.15em] font-semibold text-white/25 hover:text-white/60 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded"
+                        className="text-[10px] uppercase tracking-[0.15em] font-semibold text-white/25 hover:text-white/60 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded px-2 py-2 min-h-[36px] inline-flex items-center"
                       >
                         {item}
                       </a>

@@ -16,7 +16,6 @@ import { ErrorBoundary } from "./error-boundary"
 
 const AuroraBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    {/* Static ambient light — top-left gold */}
     <div
       className="absolute rounded-full"
       style={{
@@ -28,7 +27,6 @@ const AuroraBackground = () => (
         filter: "blur(80px)",
       }}
     />
-    {/* Static ambient light — bottom-right caramel */}
     <div
       className="absolute rounded-full"
       style={{
@@ -54,47 +52,19 @@ export function HeroSection() {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if (prefersReduced) {
       gsap.set([badgeRef.current, headlineRef.current, subRef.current, ctaRef.current, statsRef.current], {
-        opacity: 1,
-        y: 0,
-        scale: 1,
+        opacity: 1, y: 0, scale: 1,
       })
       return
     }
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.3 })
-
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" }
-      )
-        .fromTo(
-          headlineRef.current,
-          { opacity: 0, y: 60 },
-          { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" },
-          "-=0.4"
-        )
-        .fromTo(
-          subRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-          "-=0.6"
-        )
-        .fromTo(
-          ctaRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.5"
-        )
-        .fromTo(
-          statsRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-          "-=0.4"
-        )
+      tl.fromTo(badgeRef.current, { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" })
+        .fromTo(headlineRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=0.4")
+        .fromTo(subRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, "-=0.6")
+        .fromTo(ctaRef.current, { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
+        .fromTo(statsRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, "-=0.4")
     })
-
     return () => ctx.revert()
   }, [])
 
@@ -113,10 +83,9 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Background layers */}
       <AuroraBackground />
       <ErrorBoundary>
         <HeroCanvas />
@@ -145,30 +114,30 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 md:px-8 text-center pt-24 pb-8">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 md:px-8 text-center pt-20 sm:pt-24 pb-6 sm:pb-8">
 
         {/* Badge */}
-        <div ref={badgeRef} className="opacity-0 flex justify-center mb-6">
+        <div ref={badgeRef} className="opacity-0 flex justify-center mb-5 sm:mb-6">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-semibold uppercase tracking-[0.2em] text-gold border border-white/10 hover:border-gold/40 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full glass text-[11px] sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-gold border border-white/10 hover:border-gold/40 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <Sparkles className="h-3 w-3 text-gold" />
+            <Sparkles className="h-3 w-3 text-gold flex-shrink-0" />
             <span>Now accepting dinner reservations</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-gold opacity-80" />
+            <span className="h-1.5 w-1.5 rounded-full bg-gold opacity-80 flex-shrink-0" />
           </motion.div>
         </div>
 
         {/* Headline */}
         <h1
           ref={headlineRef}
-          className="opacity-0 text-center max-w-6xl mx-auto"
+          className="opacity-0 text-center max-w-5xl mx-auto"
         >
           <span
-            className="block font-black uppercase tracking-tighter leading-[0.9] mb-2"
+            className="block font-black uppercase tracking-tighter leading-[0.88] mb-1 sm:mb-2"
             style={{
-              fontSize: "clamp(3.5rem, 9vw, 9rem)",
+              fontSize: "clamp(2.8rem, 9vw, 9rem)",
               background: "linear-gradient(180deg, oklch(0.97 0.003 50) 0%, oklch(0.75 0.12 75) 60%, oklch(0.60 0.15 60) 100%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
@@ -180,7 +149,7 @@ export function HeroSection() {
           <span
             className="block font-light italic tracking-tight leading-[1] font-serif"
             style={{
-              fontSize: "clamp(3rem, 7.5vw, 7.5rem)",
+              fontSize: "clamp(2.4rem, 7.5vw, 7.5rem)",
               background: "linear-gradient(135deg, oklch(0.75 0.12 75), oklch(0.60 0.15 60), oklch(0.85 0.07 85))",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
@@ -190,9 +159,9 @@ export function HeroSection() {
             elevated
           </span>
           <span
-            className="block font-black uppercase tracking-tighter leading-[0.9] mt-2"
+            className="block font-black uppercase tracking-tighter leading-[0.88] mt-1 sm:mt-2"
             style={{
-              fontSize: "clamp(3.5rem, 9vw, 9rem)",
+              fontSize: "clamp(2.8rem, 9vw, 9rem)",
               background: "linear-gradient(180deg, oklch(0.97 0.003 50) 0%, oklch(0.85 0.07 85) 100%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
@@ -206,24 +175,24 @@ export function HeroSection() {
         {/* Subheadline */}
         <p
           ref={subRef}
-          className="opacity-0 mt-6 text-white/50 font-light leading-relaxed max-w-2xl mx-auto"
-          style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)" }}
+          className="opacity-0 mt-5 sm:mt-6 text-white/50 font-light leading-relaxed max-w-xl sm:max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-2 sm:px-0"
         >
           Bespoke French precision, warm Italian hospitality, and organic seasonal ingredients.
-          <br className="hidden md:block" />
+          <span className="hidden sm:inline"><br /></span>
+          <span className="inline sm:hidden"> </span>
           Crafted in Paris for palates that demand the extraordinary.
         </p>
 
         {/* CTAs */}
         <div
           ref={ctaRef}
-          className="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
+          className="opacity-0 flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4 mt-7 sm:mt-8"
         >
           <GlowButton
             variant="primary"
             size="lg"
             onClick={() => handleScroll("#reserve")}
-            className="min-w-48 tracking-widest uppercase text-xs"
+            className="w-full xs:w-auto min-w-0 xs:min-w-48 tracking-widest uppercase text-xs"
           >
             <span>Book a Table</span>
             <ArrowRight className="h-4 w-4" />
@@ -232,7 +201,7 @@ export function HeroSection() {
             variant="outline"
             size="lg"
             onClick={() => handleScroll("#menu")}
-            className="min-w-48 tracking-widest uppercase text-xs"
+            className="w-full xs:w-auto min-w-0 xs:min-w-48 tracking-widest uppercase text-xs"
           >
             <span>Explore Menu</span>
           </GlowButton>
@@ -241,7 +210,7 @@ export function HeroSection() {
         {/* Stats row */}
         <div
           ref={statsRef}
-          className="opacity-0 mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-white/[0.04] pt-8"
+          className="opacity-0 mt-10 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto border-t border-white/[0.04] pt-6 sm:pt-8"
         >
           {stats.map((stat, i) => (
             <motion.div
@@ -254,7 +223,7 @@ export function HeroSection() {
               <div
                 className="font-black uppercase tracking-tight mb-1 stat-number"
                 style={{
-                  fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+                  fontSize: "clamp(1.25rem, 3vw, 2.25rem)",
                   background: "linear-gradient(135deg, oklch(0.75 0.12 75), oklch(0.60 0.15 60))",
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
@@ -263,7 +232,7 @@ export function HeroSection() {
               >
                 {stat.value}
               </div>
-              <div className="text-white/35 text-xs font-medium uppercase tracking-[0.15em]">
+              <div className="text-white/35 text-[10px] sm:text-xs font-medium uppercase tracking-[0.15em] leading-tight">
                 {stat.label}
               </div>
             </motion.div>
@@ -272,7 +241,7 @@ export function HeroSection() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40"
+          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40"
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
@@ -284,10 +253,8 @@ export function HeroSection() {
 
       {/* Bottom gradient fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{
-          background: "linear-gradient(to top, oklch(0.08 0.005 50), transparent)",
-        }}
+        className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 pointer-events-none"
+        style={{ background: "linear-gradient(to top, oklch(0.08 0.005 50), transparent)" }}
         aria-hidden="true"
       />
     </section>

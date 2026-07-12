@@ -107,7 +107,7 @@ export function FaqSectionNew() {
   return (
     <section
       id="faq"
-      className="relative py-16 md:py-24"
+      className="relative py-12 sm:py-16 md:py-24"
       aria-labelledby="faq-heading"
     >
       {/* Background */}
@@ -119,8 +119,8 @@ export function FaqSectionNew() {
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+      <div className="container mx-auto px-5 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-16">
           {/* Left column */}
           <motion.div
             ref={leftReveal.ref}

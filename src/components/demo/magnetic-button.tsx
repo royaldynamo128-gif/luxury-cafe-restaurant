@@ -91,7 +91,7 @@ export function GlowButton({
   type = "button",
 }: GlowButtonProps) {
   const sizeClasses = {
-    sm: "px-4 py-2 text-xs",
+    sm: "px-4 py-2.5 text-xs min-h-[44px]",
     md: "px-6 py-3 text-sm",
     lg: "px-8 py-4 text-sm",
   }

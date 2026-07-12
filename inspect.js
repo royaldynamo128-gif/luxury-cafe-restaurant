@@ -20,8 +20,8 @@ const fs = require('fs');
   });
 
   try {
-    console.log('Navigating to http://localhost:3000...');
-    await page.goto('http://localhost:3000', { waitUntil: 'load', timeout: 15000 });
+    console.log('Navigating to https://test.jgcjgjg.shop...');
+    await page.goto('https://test.jgcjgjg.shop', { waitUntil: 'load', timeout: 15000 });
     console.log('Page loaded. Waiting 5s...');
     await page.waitForTimeout(5000);
     
