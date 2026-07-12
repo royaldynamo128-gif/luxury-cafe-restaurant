@@ -1,0 +1,13 @@
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+  "@sentry/cli": true
+  core-js: true
+  esbuild: true
+  msgpackr-extract: true
+  "@parcel/watcher": true
+  better-auth: true
+  "@better-auth/cli": true
+  puppeteer: true
+minimumReleaseAgeExclude:
+  - vite@8.1.2

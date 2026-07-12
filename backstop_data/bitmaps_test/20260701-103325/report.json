@@ -1,0 +1,275 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_Home_Page_0_document_0_mobile.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_Home_Page_0_document_0_mobile.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_Home_Page_0_document_0_mobile.png",
+        "label": "Home Page",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:3000/",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "mobile",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.2798186477429529,
+          "misMatchPercentage": "0.28",
+          "analysisTime": 148
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_Home_Page_0_document_0_mobile.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_Home_Page_0_document_1_tablet.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_Home_Page_0_document_1_tablet.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_Home_Page_0_document_1_tablet.png",
+        "label": "Home Page",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:3000/",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "tablet",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.25104035069249486,
+          "misMatchPercentage": "0.25",
+          "analysisTime": 308
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_Home_Page_0_document_1_tablet.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_Home_Page_0_document_2_laptop.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_Home_Page_0_document_2_laptop.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_Home_Page_0_document_2_laptop.png",
+        "label": "Home Page",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:3000/",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "laptop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.32342143106153043,
+          "misMatchPercentage": "0.32",
+          "analysisTime": 285
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_Home_Page_0_document_2_laptop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_Home_Page_0_document_3_desktop.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_Home_Page_0_document_3_desktop.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_Home_Page_0_document_3_desktop.png",
+        "label": "Home Page",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:3000/",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.40798762419382956,
+          "misMatchPercentage": "0.41",
+          "analysisTime": 221
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_Home_Page_0_document_3_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_Home_Page_0_document_4_ultrawide.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_Home_Page_0_document_4_ultrawide.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_Home_Page_0_document_4_ultrawide.png",
+        "label": "Home Page",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "http://localhost:3000/",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "ultrawide",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.35775951994026706,
+          "misMatchPercentage": "0.36",
+          "analysisTime": 351
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_Home_Page_0_document_4_ultrawide.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_System_Verification_Dashboard_0_document_0_mobile.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_System_Verification_Dashboard_0_document_0_mobile.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_System_Verification_Dashboard_0_document_0_mobile.png",
+        "label": "System Verification Dashboard",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.15,
+        "url": "http://localhost:3000/verification",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "mobile",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.3745750184774575,
+          "misMatchPercentage": "0.37",
+          "analysisTime": 43
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_System_Verification_Dashboard_0_document_0_mobile.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_System_Verification_Dashboard_0_document_1_tablet.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_System_Verification_Dashboard_0_document_1_tablet.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_System_Verification_Dashboard_0_document_1_tablet.png",
+        "label": "System Verification Dashboard",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.15,
+        "url": "http://localhost:3000/verification",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "tablet",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.2266056629834254,
+          "misMatchPercentage": "0.23",
+          "analysisTime": 92
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_System_Verification_Dashboard_0_document_1_tablet.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_System_Verification_Dashboard_0_document_2_laptop.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_System_Verification_Dashboard_0_document_2_laptop.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_System_Verification_Dashboard_0_document_2_laptop.png",
+        "label": "System Verification Dashboard",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.15,
+        "url": "http://localhost:3000/verification",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "laptop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.15625,
+          "misMatchPercentage": "0.16",
+          "analysisTime": 119
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_System_Verification_Dashboard_0_document_2_laptop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_System_Verification_Dashboard_0_document_3_desktop.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_System_Verification_Dashboard_0_document_3_desktop.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_System_Verification_Dashboard_0_document_3_desktop.png",
+        "label": "System Verification Dashboard",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.15,
+        "url": "http://localhost:3000/verification",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "desktop",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.17936826671766432,
+          "misMatchPercentage": "0.18",
+          "analysisTime": 247
+        },
+        "diffImage": "../bitmaps_test/20260701-103325/failed_diff_vertex_visual_tests_System_Verification_Dashboard_0_document_3_desktop.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/vertex_visual_tests_System_Verification_Dashboard_0_document_4_ultrawide.png",
+        "test": "../bitmaps_test/20260701-103325/vertex_visual_tests_System_Verification_Dashboard_0_document_4_ultrawide.png",
+        "selector": "document",
+        "fileName": "vertex_visual_tests_System_Verification_Dashboard_0_document_4_ultrawide.png",
+        "label": "System Verification Dashboard",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.15,
+        "url": "http://localhost:3000/verification",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "ultrawide",
+        "diff": {
+          "isSameDimensions": true,
+          "dimensionDifference": {
+            "width": 0,
+            "height": 0
+          },
+          "rawMisMatchPercentage": 0.09957239672977625,
+          "misMatchPercentage": "0.10",
+          "analysisTime": 183
+        }
+      },
+      "status": "pass"
+    }
+  ],
+  "id": "vertex_visual_tests"
+}

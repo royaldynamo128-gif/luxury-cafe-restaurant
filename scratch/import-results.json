@@ -1,0 +1,368 @@
+[
+  {
+    "name": "@base-ui/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@conform-to/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@conform-to/zod",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@fontsource/inter",
+    "status": "PASS",
+    "details": "CSS/Font/Asset package verified"
+  },
+  {
+    "name": "@hookform/resolvers",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@iconify/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@mdx-js/loader",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@mdx-js/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@mux/mux-player-react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@next/mdx",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@orama/orama",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@react-email/components",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@react-three/drei",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@react-three/fiber",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@react-three/postprocessing",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@rive-app/react-canvas",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@sentry/nextjs",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@splinetool/react-spline",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tanstack/react-query",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tanstack/react-table",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tremor/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@trpc/client",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@trpc/react-query",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@trpc/server",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tsparticles/engine",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tsparticles/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@tsparticles/slim",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "@uploadthing/react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "ai",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "animejs",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "better-auth",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "class-variance-authority",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "clsx",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "cmdk",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "drizzle-orm",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "embla-carousel-react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "framer-motion",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "geist",
+    "status": "PASS",
+    "details": "CSS/Font/Asset package verified"
+  },
+  {
+    "name": "gsap",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "howler",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "lenis",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "logrocket",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "lottie-react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "lucide-react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "maplibre-gl",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "matter-js",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "motion",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "next",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "next-pwa",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "next-seo",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "next-themes",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "ogl",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "payload",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "pixi.js",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "plausible-tracker",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "posthog-js",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "react",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "react-aria-components",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "react-dom",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "react-email",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "react-hook-form",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "recharts",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "rough-notation",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "shadcn",
+    "status": "PASS",
+    "version": "4.12.0",
+    "details": "CLI verification successful"
+  },
+  {
+    "name": "shadcn-extensions",
+    "status": "PASS",
+    "details": "Sub-project directory verified"
+  },
+  {
+    "name": "sharp",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "split-type",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "tailwind-merge",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "three",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "tw-animate-css",
+    "status": "PASS",
+    "details": "CSS/Font/Asset package verified"
+  },
+  {
+    "name": "uploadthing",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "zod",
+    "status": "PASS",
+    "error": null
+  },
+  {
+    "name": "zustand",
+    "status": "PASS",
+    "error": null
+  }
+]

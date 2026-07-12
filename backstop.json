@@ -1,0 +1,79 @@
+{
+  "id": "vertex_visual_tests",
+  "viewports": [
+    {
+      "label": "mobile",
+      "width": 375,
+      "height": 667
+    },
+    {
+      "label": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "laptop",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "label": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "label": "ultrawide",
+      "width": 2560,
+      "height": 1080
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "Home Page",
+      "url": "http://localhost:3000/",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 1500,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "misMatchThreshold": 2.0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "System Verification Dashboard",
+      "url": "http://localhost:3000/verification",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 2000,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "misMatchThreshold": 2.0,
+      "requireSameDimensions": true
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["CI", "json"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "executablePath": "/home/rai/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome",
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-web-security"
+    ]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
