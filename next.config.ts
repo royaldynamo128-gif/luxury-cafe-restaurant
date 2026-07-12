@@ -4,7 +4,7 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   turbopack: {},
-  allowedDevOrigins: ["10.247.200.36", "localhost:3000", "*.lhr.life", "*.serveousercontent.com"],
+  allowedDevOrigins: ["10.247.200.36", "localhost:3000", "*.lhr.life", "*.serveousercontent.com", "test.jgcjgjg.shop", "*.jgcjgjg.shop"],
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
